@@ -1,6 +1,7 @@
 // ProductsContext.js
 import { createContext, useState, useEffect } from "react";
 
+
 export const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
@@ -18,6 +19,7 @@ export const ProductsProvider = ({ children }) => {
     return (
         <ProductsContext.Provider value={{ products, setProducts }}>
             {children}
+           
         </ProductsContext.Provider>
     );
 };

@@ -9,7 +9,6 @@ const categories = [
     "BRACELETS & BANGLES",
     "SOLITAIRES",
     "GOLD COINS",
-    "ALL JEWELLERY",
 ];
 
 export default function CategoryNav() {

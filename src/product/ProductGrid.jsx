@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+import About from "../pages/About";
 
 // Static products
 const staticProducts = [
@@ -34,10 +35,14 @@ export default function ProductGrid({ dynamicProducts = [] }) {
     const allProducts = [...storedProducts, ...staticProducts];
 
     return (
+        <>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {allProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
             ))}
-        </div>
+            </div>
+            <br></br><br></br><br></br><br></br>
+            <About/>
+    </>
     );
 }

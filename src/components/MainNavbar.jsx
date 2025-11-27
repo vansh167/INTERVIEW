@@ -9,10 +9,16 @@ export default function MainNavbar() {
     const [searchQuery, setSearchQuery] = useState("");
     const navigate = useNavigate();
 
+    // Initialize admin user & current logged-in user
     useEffect(() => {
         const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
         if (!storedUsers.find((u) => u.email === "admin@gmail.com")) {
-            storedUsers.push({ name: "Admin", email: "admin@gmail.com", password: "admin123", role: "admin" });
+            storedUsers.push({
+                name: "Admin",
+                email: "admin@gmail.com",
+                password: "admin123",
+                role: "admin",
+            });
             localStorage.setItem("users", JSON.stringify(storedUsers));
         }
 
@@ -34,23 +40,16 @@ export default function MainNavbar() {
     };
 
     const handleSearch = () => {
-        if (searchQuery.trim() === "") return;
+        if (!searchQuery.trim()) return;
 
-        // Get products from localStorage
         const products = JSON.parse(localStorage.getItem("products")) || [];
-
-        // Filter products whose name includes search query
         const results = products.filter((p) =>
             p.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
 
-        // Store results in localStorage temporarily to pass to results page
         localStorage.setItem("searchResults", JSON.stringify(results));
-
-        // Navigate to search results page
         navigate("/search-results");
     };
-
 
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
@@ -63,6 +62,7 @@ export default function MainNavbar() {
         { path: "refer-and-earn", label: "📎 Refer & Earn" },
         { path: "ready-stock", label: "🚚 Ready Stock" },
         { path: "jsp", label: "🎉 JSP" },
+      // About page
     ];
 
     return (
@@ -80,7 +80,7 @@ export default function MainNavbar() {
                     <div className="relative max-w-xl w-full mx-auto">
                         <input
                             type="text"
-                            placeholder="Slim Sparkle Diamond Ring |"
+                            placeholder="Search products..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             onKeyDown={handleKeyDown}
@@ -88,11 +88,7 @@ export default function MainNavbar() {
                         />
                         <div className="absolute right-5 top-1/2 -translate-y-1/2 flex items-center gap-4 text-gray-600">
                             <FiCamera size={18} className="cursor-pointer hover:text-[#2BB673]" />
-                            <FiSearch
-                                size={18}
-                                className="cursor-pointer hover:text-[#2BB673]"
-                                onClick={handleSearch}
-                            />
+                            <FiSearch size={18} className="cursor-pointer hover:text-[#2BB673]" onClick={handleSearch} />
                         </div>
                     </div>
                 </div>
@@ -117,11 +113,12 @@ export default function MainNavbar() {
 
                     {user?.role && (
                         <span className="ml-2 px-2 py-1 bg-green-100 text-green-800 text-xs rounded font-medium">
-                            {user.role === "admin" ? "Admin" : user.role === "sub-admin" ? "Sub-Admin" : ""}
+                            {user.role.toUpperCase()}
                         </span>
                     )}
 
                     <FiHeart size={22} className="cursor-pointer hover:text-[#249a63]" />
+
                     <div className="relative cursor-pointer">
                         <FiShoppingCart size={22} className="hover:text-[#249a63]" />
                         <span className="absolute -top-1.5 -right-2 bg-[#2BB673] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center">

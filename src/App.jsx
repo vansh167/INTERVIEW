@@ -6,20 +6,22 @@ import ReadyStock from "./pages/ReadyStock";
 import JSP from "./pages/JSP";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import AddProduct from "./pages/AddProduct";
+import AddProduct from "./product/AddProduct";
 import { ProductsProvider } from "./pages/ProductsContext";
 import AdminProducts from "./pages/AdminProducts";
 import SearchResults from "./pages/SearchResult";
 
 // Category pages
 import Rings from "./category/Rings";
-import NewArrival from "./category/NewArival";
+// import NewArrival from "./category/NewArival";
 import Earring from "./category/Earring";
 import Pendants from "./category/Pendants";
 import Braceletas from "./category/Braceletas";
 import Solitaires from "./category/Solitaires";
 import GoldCoin from "./category/GoldCoin";
 import ProductDetail from "./pages/ProductDetail";
+import About from "./pages/About";
+import Footer from "./Footer/Footer";
 
 function App() {
   return (
@@ -37,12 +39,13 @@ function App() {
 
             {/* Category routes */}
             <Route path="/rings" element={<Rings />} />
-            <Route path="/new-arrival" element={<NewArrival />} />
+            <Route path="/new-arrival" element={<ShopPage />} />
             <Route path="/earrings" element={<Earring />} />
             <Route path="/pendants" element={<Pendants />} />
             <Route path="/bracelets-bangles" element={<Braceletas />} />
             <Route path="/solitaires" element={<Solitaires />} />
             <Route path="/gold-coins" element={<GoldCoin />} />
+            <Route path="/about" element={<About />} />
 
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
@@ -50,6 +53,7 @@ function App() {
           </Routes>
         </div>
       </Router>
+      <Footer />
     </ProductsProvider>
   );
 }

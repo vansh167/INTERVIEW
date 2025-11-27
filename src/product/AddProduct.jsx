@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { ProductsContext } from "./ProductsContext";
+import { ProductsContext } from "../pages/ProductsContext";
 import Navbar from "../components/Navbar/Navbar";
 
 const categoriesList = [
@@ -10,7 +10,7 @@ const categoriesList = [
     "BRACELETS & BANGLES",
     "SOLITAIRES",
     "GOLD COINS",
-  
+
 ];
 
 const metalsList = ["Gold", "Silver", "Platinum"];

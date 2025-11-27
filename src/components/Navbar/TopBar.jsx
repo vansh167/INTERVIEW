@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function TopBar() {
     return (
@@ -7,7 +8,12 @@ export default function TopBar() {
                 <span className="tracking-wide font-medium">ORDER TRACKING</span>
                 <span className="flex items-center gap-1.5 text-sm">
                     <span>Refer and earn extra discount</span>
-                    <a href="#" className="underline hover:opacity-80">Click here...</a>
+                    <Link
+                        to="/refer-and-earn"
+                        className="underline hover:opacity-80"
+                    >
+                        Click here...
+                    </Link>
                 </span>
             </div>
         </div>
